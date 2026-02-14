@@ -1,14 +1,285 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <h1 class="titulo">Mi primera pagina web</h1>
-    <p> en esta pagina esta la prueba de todo lo que he aprendido</p>
-    <button>CLick</button>
-</body>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Feliz San Valentín ❤️</title>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: #ffd6e7;
+        font-family: "Arial", sans-serif;
+        text-align: center;
+        overflow-x: hidden;
+      }
+
+      /* CONTENEDOR PRINCIPAL */
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 15px 60px;
+      }
+
+      /* CORAZÓN */
+      .heart {
+        width: 120px;
+        height: 120px;
+        background: red;
+        position: relative;
+        transform: rotate(-45deg);
+        margin-top: 40px;
+        animation: beat 1.2s infinite;
+      }
+
+      .heart::before,
+      .heart::after {
+        content: "";
+        width: 120px;
+        height: 120px;
+        background: red;
+        border-radius: 50%;
+        position: absolute;
+      }
+
+      .heart::before {
+        top: -60px;
+        left: 0;
+      }
+
+      .heart::after {
+        left: 60px;
+        top: 0;
+      }
+
+      @keyframes beat {
+        0%,
+        100% {
+          transform: rotate(-45deg) scale(1);
+        }
+        50% {
+          transform: rotate(-45deg) scale(1.15);
+        }
+      }
+
+      h1 {
+        color: #c2185b;
+        margin-top: 30px;
+        font-size: 22px;
+      }
+
+      /* MENSAJE */
+      #mensaje {
+        margin: 20px 0;
+        background: white;
+        padding: 15px;
+        border-radius: 20px;
+        max-width: 90%;
+        font-size: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        min-height: 40px;
+      }
+
+      /* BOTÓN */
+      button {
+        background: #c2185b;
+        color: white;
+        border: none;
+        padding: 14px 25px;
+        border-radius: 30px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-bottom: 25px;
+        transition: 0.3s;
+      }
+
+      button:active {
+        transform: scale(0.95);
+      }
+
+      /* FOTOS */
+      .galeria {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+      }
+
+      .foto {
+        width: 80%;
+        max-width: 280px;
+        background: white;
+        padding: 10px;
+        border-radius: 15px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        animation: aparecer 0.5s ease;
+      }
+
+      .foto img {
+        width: 100%;
+        border-radius: 10px;
+      }
+
+      @keyframes aparecer {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* BRILLANTINAS */
+      .sparkle {
+        position: fixed;
+        width: 6px;
+        height: 6px;
+        background: gold;
+        border-radius: 50%;
+        animation: caer 3s linear infinite;
+        pointer-events: none;
+      }
+
+      .foto {
+        width: 80%;
+        max-width: 280px;
+        background: white;
+        padding: 10px;
+        border-radius: 15px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        transition:
+          transform 0.4s ease,
+          opacity 0.4s ease;
+      }
+
+      .nueva {
+        animation: slideDown 0.5s ease;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes caer {
+        0% {
+          transform: translateY(-10px);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="heart"></div>
+
+      <h1>Feliz San Valentín ❤️</h1>
+
+      <div id="mensaje"></div>
+
+      <button onclick="sorpresa()">Toca aquí 💌</button>
+
+      <div class="galeria" id="galeria"></div>
+    </div>
+
+    <script>
+      const fotos = [
+        "./love/foto1.jpg",
+        "./love/foto2.jpg",
+        "./love/foto3.jpg",
+        "./love/foto4.jpg",
+        "./love/foto5.jpg",
+        "./love/foto6.jpg",
+        "./love/foto7.jpg",
+        "./love/foto8.jpg",
+        "./love/foto9.jpg",
+        "./love/foto10.jpg",
+        "./love/foto11.jpg",
+        "./love/foto12.jpg",
+        "./love/foto13.jpg",
+        "./love/foto14.jpg",
+      ];
+
+      // Mensajes bonitos
+      const mensajes = [
+        "Eres mi persona favorita ❤️",
+        "Gracias por llenar mi vida de amor 💕",
+        "Contigo todo es más bonito 💖",
+        "Quiero muchos años a tu lado 💘",
+        "Eres mi casualidad más hermosa 💞",
+        "Desde que llegaste, todo tiene más color 🌸",
+        "Tu sonrisa es mi lugar seguro ✨",
+        "Eres mi mejor decisión ❤️",
+        "No sabía que necesitaba tanto amor hasta que te conocí 💕",
+        "Mi plan favorito siempre será contigo 💖",
+        "Eres mi paz en días difíciles 🤍",
+        "Contigo aprendí lo que es amar de verdad 💘",
+        "Eres mi sueño hecho realidad ✨",
+        "Si volviera a nacer, te volvería a elegir 💞",
+        "Gracias por existir y ser tú ❤️",
+        "Mi mundo es mejor porque estás en él 🌎💕",
+        "Tu abrazo es mi lugar favorito 🤍",
+        "Eres el mejor capítulo de mi vida 📖💖",
+        "Quiero construir todos mis recuerdos contigo 📸💕",
+        "Amarte es lo más bonito que me ha pasado 💘",
+        "Eres mi siempre ❤️",
+        "Mi corazón te eligió a ti 💞",
+        "Tu amor es mi mayor tesoro ✨",
+        "No hay nadie como tú 💖",
+        "Eres mi persona, hoy y siempre 💕",
+      ];
+
+      let index = 0;
+      function sorpresa() {
+        if (index < fotos.length && index < mensajes.length) {
+          document.getElementById("mensaje").innerText = mensajes[index];
+
+          let contenedor = document.getElementById("galeria");
+          let nuevaFoto = document.createElement("div");
+          nuevaFoto.className = "foto nueva";
+          nuevaFoto.innerHTML = `<img src="${fotos[index]}" alt="foto">`;
+
+          contenedor.insertBefore(nuevaFoto, contenedor.firstChild);
+
+          index++;
+        } else {
+          document.getElementById("mensaje").innerText =
+            "Ya viste lo hermosa que eres 💕";
+        }
+      }
+
+      /* BRILLANTINAS */
+      function crearBrillo() {
+        const brillo = document.createElement("div");
+        brillo.className = "sparkle";
+        brillo.style.left = Math.random() * window.innerWidth + "px";
+        brillo.style.background = Math.random() > 0.5 ? "gold" : "silver";
+        document.body.appendChild(brillo);
+
+        setTimeout(() => {
+          brillo.remove();
+        }, 3000);
+      }
+
+      setInterval(crearBrillo, 200);
+    </script>
+  </body>
 </html>
